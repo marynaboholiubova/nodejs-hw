@@ -14,7 +14,7 @@
     "url": "git+https://github.com/marynaboholiubova/nodejs-hw.git"
   },
   "keywords": [],
-  "author": "YOUR_NAME",
+  "author": "Maryna Boholiubova",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/marynaboholiubova/nodejs-hw/issues"
@@ -24,6 +24,8 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "http-errors": "^2.0.1",
+    "mongoose": "^9.7.3",
     "pino-http": "^11.0.0"
   },
   "devDependencies": {
