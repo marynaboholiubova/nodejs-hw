@@ -7,7 +7,7 @@ export const getAllNotes = async (req, res) => {
   res.status(200).json(notes);
 };
 
-export const getNoteById = async (req, res, next) => {
+export const getNoteById = async (req, res) => {
   const { noteId } = req.params;
 
   const note = await Note.findById(noteId);
@@ -29,7 +29,7 @@ export const updateNote = async (req, res) => {
   const { noteId } = req.params;
 
   const note = await Note.findByIdAndUpdate(noteId, req.body, {
-    new: true,
+    returnDocument: 'after',
     runValidators: true,
   });
 
