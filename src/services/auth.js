@@ -1,12 +1,13 @@
-import { nanoid } from 'nanoid';
+import crypto from 'node:crypto';
+
 import { Session } from '../models/session.js';
 import { FIFTEEN_MINUTES, ONE_DAY } from '../constants/time.js';
 
 export const createSession = async (userId) => {
-  await Session.deleteOne({ userId });
+  await Session.deleteMany({ userId });
 
-  const accessToken = nanoid();
-  const refreshToken = nanoid();
+  const accessToken = crypto.randomBytes(30).toString('base64');
+  const refreshToken = crypto.randomBytes(30).toString('base64');
 
   const session = await Session.create({
     userId,
