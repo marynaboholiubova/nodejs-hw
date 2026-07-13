@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema(
       required: true,
       minlength: 8,
     },
+    avatar: {
+      type: String,
+      default: 'https://ac.goit.global/fullstack/react/default-avatar.jpg',
+    },
   },
   {
     timestamps: true,
@@ -35,6 +39,7 @@ userSchema.pre('save', function (next) {
 userSchema.methods.toJSON = function () {
   const obj = this.toObject();
   delete obj.password;
+
   return obj;
 };
 
