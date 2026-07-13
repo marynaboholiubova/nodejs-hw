@@ -1,10 +1,10 @@
 import bcrypt from 'bcrypt';
 import createHttpError from 'http-errors';
-
 import jwt from 'jsonwebtoken';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import handlebars from 'handlebars';
+
 import { sendEmail } from '../utils/sendMail.js';
 import { User } from '../models/user.js';
 import { Session } from '../models/session.js';
@@ -114,6 +114,7 @@ export const logoutUser = async (req, res) => {
 
   res.status(204).send();
 };
+
 export const requestResetEmail = async (req, res) => {
   const { email } = req.body;
 
@@ -156,6 +157,7 @@ export const requestResetEmail = async (req, res) => {
 
   try {
     await sendEmail({
+      from: process.env.SMTP_FROM,
       to: user.email,
       subject: 'Reset your password',
       html,
